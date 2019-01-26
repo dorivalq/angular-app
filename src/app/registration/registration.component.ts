@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { Registration } from './Registration';
 import { RegistrationServiceService } from '../services/registration-service.service';
-//import {Registration} from '../registration/Registration';
+import { Registration } from '../model/Registration';
+// import { Registration } from './Registration';
 
 
 @Component({
@@ -43,6 +43,7 @@ countries: string[] = ['US', 'ÚK', 'India', 'UAE' ]
 
   onNew(){
     this.regModel = new Registration();
+    this.registrations = [];
     this.submitType = 'Save';
     this.showNew = true;
   }
@@ -50,6 +51,7 @@ countries: string[] = ['US', 'ÚK', 'India', 'UAE' ]
   onSave(){
     if(this.submitType === 'Save'){
       this.registrations.push(this.regModel);
+      this.registrationServiceService.save(this.regModel);
       this.showNew = false;
     }else{
       this.registrations[this.selectedRow].lastName = this.regModel.lastName;

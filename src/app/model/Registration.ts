@@ -10,4 +10,11 @@ export class Registration {
         public password: string = '',
         public country: string = 'Select country'
     ) { }
+
+    /**
+     * {
+    "firstName":"Dori",
+    "lastName":"Silva--"
+    }
+     */
 }
