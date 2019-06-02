@@ -1,6 +1,7 @@
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 export class Registration {
+    
     constructor(
 
         public firstName: string = '',
@@ -10,7 +11,7 @@ export class Registration {
         public password: string = '',
         public country: string = 'Select country'
     ) { }
-
+    
     /**
      * {
     "firstName":"Dori",

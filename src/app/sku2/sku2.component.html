@@ -1,0 +1,11 @@
+<h2>Sku with formBuilder</h2>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+  <input type="text"
+  id="skuInput"
+  placeholder="SKU"
+  [formControl]="myForm.controls['sku']"
+  >
+  <input type="text" id="desc" placeholder="DESC" [formControl]="myForm.controls['description']">
+
+  <button type="submit" class="ui button">Submit</button>
+</form>
