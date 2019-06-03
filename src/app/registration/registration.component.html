@@ -7,7 +7,7 @@
           <th>#</th>
           <th>First Name</th>
           <th>Last Name</th>
-          <th>DOB</th>
+          <!-- <th>DOB</th> -->
           <th>Email</th>
           <th>Country</th>
           <th></th>
@@ -19,7 +19,7 @@
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ registration.firstName }}</td>
           <td>{{ registration.lastName }}</td>
-          <td>{{registration.dob | date: 'dd/MM/yyyy'}} </td>          
+          <!-- <td>{{registration.dob | date: 'dd/MM/yyyy'}} </td>           -->
           <td>{{ registration.email }}</td>
           <td>{{ registration.country }}</td>
           <td>
@@ -52,7 +52,7 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="dob-input" class="col-2 col-form-label">DOB</label>
         <div class="col-3 input-group">
           <input type="text" class="form-control" placeholder="yyyy-mm-dd" name="dob" [(ngModel)]="regModel.dob"
@@ -61,7 +61,7 @@
             <img src="assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
           </button>
         </div>
-      </div>
+      </div> -->
 
       <div class="form-group row">
         <label for="example-email-input" class="col-2 col-form-label">Email</label>
@@ -77,14 +77,27 @@
       </div>
 
       <div class="form-group row">
-          <label for="city-input" class="col-2 col-form-label">Country</label>
-          <div class="col-10 dropdown" ngbDropdown myDrop="ngbDropdown">
-          <button type="button" class="btn btn-outline-primary" id="dropdownManual" name="country" ngbDropdownToggle>{{regModel.country}}</button>
+        <label for="city-input" class="col-2 col-form-label">Country</label>
+        <div class="col-10 dropdown" ngbDropdown myDrop="ngbDropdown">
+          <button type="button" class="btn btn-outline-primary" id="dropdownManual" name="country"
+            ngbDropdownToggle>{{regModel.country}}</button>
           <div ngbDropdownMenu aria-labelledby="dropdownManual">
-          <button type="button" class="dropdown-item" *ngFor="let country of countries" (click)="onChangeCountry(country)">{{country}}</button>
+            <button type="button" class="dropdown-item" *ngFor="let country of countries"
+              (click)="onChangeCountry(country)">{{country}}</button>
           </div>
-          </div>
-          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="picture" class="col-2 col-form-label">Image</label>
+        <div class="col-3">
+            <input type="file" name="file1" id="file1" (change)="onFileChange($event)">
+        </div>
+        <div class="col-6">
+          <!-- <img src="http://localhost:8080/image"> -->
+          <img [src]="imageUrl">
+        </div>
+      </div>
 
           <button type="submit" class="btn btn-success">{{submitType}}</button>
           <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button> 

@@ -1,0 +1,10 @@
+{
+    "/save-image": {
+      "target": "http://localhost",
+      "secure": false,
+      "pathRewrite": {
+      "^/save-image": ""
+    },
+      "changeOrigin": true
+    }
+  }

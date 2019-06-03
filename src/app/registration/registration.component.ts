@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { RegistrationServiceService } from '../services/registration-service.service';
 import { Registration } from '../model/Registration';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 // import { Registration } from './Registration';
 
 
@@ -20,6 +21,8 @@ submitType: string = 'save';
 selectedRow: number;
 countries: string[] = ['US', 'ÚK', 'India', 'UAE' ]
 
+file: File;
+imageUrl: string;
   constructor(private registrationServiceService: RegistrationServiceService) { 
     
 
@@ -51,7 +54,9 @@ countries: string[] = ['US', 'ÚK', 'India', 'UAE' ]
   onSave(){
     if(this.submitType === 'Save'){
       this.registrations.push(this.regModel);
-      this.registrationServiceService.save(this.regModel);
+      //this.registrationServiceService.save(this.regModel);
+      // this.registrationServiceService.saveImage(this.file, this.file.name.length );
+      this.upload(this.file)
       this.showNew = false;
     }else{
       this.registrations[this.selectedRow].lastName = this.regModel.lastName;
@@ -84,4 +89,35 @@ countries: string[] = ['US', 'ÚK', 'India', 'UAE' ]
     this.regModel.country = country;
   }
 
+  onFileChange(event: any){
+    console.log(event);
+    this.file = event.target.files[0];
+    let reader = new FileReader()
+    reader.readAsDataURL(this.file);
+    reader.onload = (e)=>{
+      setTimeout(()=>{
+        this.imageUrl = reader.result.toString();
+        console.log('----------------------------------------------------')
+        console.log(this.imageUrl)
+      },1000)
+    }
+
+  }
+
+  progress: { percentage: number } = { percentage: 0 };
+  upload(file: File) {
+    this.progress.percentage = 0;
+ 
+    //this.currentFileUpload = this.selectedFiles.item(0);
+    this.registrationServiceService.saveImage(this.file, 1).subscribe(event => {
+    //this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.progress.percentage = Math.round(100 * event.loaded / event.total);
+      } else if (event instanceof HttpResponse) {
+        console.log('File is completely uploaded!');
+      }
+    });
+ 
+    this.file = undefined;
+  }
 }
