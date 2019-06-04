@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { DocumentsComponent } from './documents/documents.component';
 //import {  FormsModule} from '@angular/forms';
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    DocumentsComponent
   ],
   imports: [
     BrowserModule,
