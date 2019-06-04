@@ -14,6 +14,7 @@ import java.util.Map;
 
 @SpringBootApplication
 @RestController
+@CrossOrigin()
 public class Application {
     static Map<Integer, byte[]> imageDB = new HashMap<>();
 
@@ -30,8 +31,8 @@ public class Application {
         return  bo.toByteArray();
     }
 
-    @RequestMapping(value = "/image-db/{id}" , produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
-    public byte[] imageDB(Integer id) throws IOException {
+    @RequestMapping(value = "/image/{id}" , produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
+    public byte[] imageDB(@PathVariable Integer id) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(imageDB.get(id));
         BufferedImage bim = ImageIO.read(bis);
 
@@ -40,8 +41,8 @@ public class Application {
         return  bo.toByteArray();
     }
 
-    @CrossOrigin(origins ="http://localhost" )
-    @RequestMapping(method = RequestMethod.POST, value = "/save-image/{id}")
+//    @CrossOrigin(origins ="http://localhost" )
+    @RequestMapping(method = RequestMethod.POST, value = "/image/{id}")
     public ResponseEntity saveImage(@RequestBody byte [] bytes, @PathVariable Integer id) throws IOException {
         imageDB.put(id,bytes);
 
