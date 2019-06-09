@@ -13,16 +13,21 @@ const params  = new HttpParams().set('apiKey', apiKey);
   providedIn: 'root'
 })
 export class NewsService {
-
+  newSubscription;
   constructor(private http : HttpClient) { 
 
   }
 
   getData(url){
-    return this.http.get(`${apiUrl}/${url}`, {params}).pipe(
+    // this.newSubscription = this.http.get(`${apiUrl}/${url}`, {params}).pipe(
+      return this.http.get(`${apiUrl}/${url}`, {params}).pipe(
       tap(value => {
         console.log(value);
       })
     );
+  }
+
+  ngOnDestroy(){
+    this.newSubscription.unsubscribe();
   }
 }
