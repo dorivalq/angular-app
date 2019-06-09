@@ -9,6 +9,8 @@ const apiKey = environment.apiKey;
 const apiUrl = environment.apiUrl;
 
 const params  = new HttpParams().set('apiKey', apiKey);
+//const par1 = new HttpParams().set('apiKey', apiKey);
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,16 +20,11 @@ export class NewsService {
 
   }
 
-  getData(url){
-    // this.newSubscription = this.http.get(`${apiUrl}/${url}`, {params}).pipe(
-      return this.http.get(`${apiUrl}/${url}`, {params}).pipe(
-      tap(value => {
-        console.log(value);
-      })
-    );
-  }
-
-  ngOnDestroy(){
-    this.newSubscription.unsubscribe();
-  }
+getData(url){
+  return this.http.get(`${apiUrl}/${url}`, {params}).pipe(
+    tap(data => {
+      console.log(data);
+    })
+  )
+}
 }

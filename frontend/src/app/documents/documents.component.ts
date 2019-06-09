@@ -14,12 +14,11 @@ export class DocumentsComponent implements OnInit {
   ngOnInit() {
     this.getData();
   }
-  getData() {
+  getData(){
     this.newsService.getData('top-headlines?country=us')
-      .subscribe(data => {
-        this.news = data;
-      });
-    ;
+    .subscribe(data =>{
+      this.news = data;
+    })
   }
 
 }

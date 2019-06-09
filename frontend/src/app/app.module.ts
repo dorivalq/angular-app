@@ -10,6 +10,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { DocumentsComponent } from './documents/documents.component';
+import { HeadlinesComponent } from './headlines/headlines.component';
 //import {  FormsModule} from '@angular/forms';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { DocumentsComponent } from './documents/documents.component';
     NavbarComponent,
     HomeComponent,
     RegistrationComponent,
-    DocumentsComponent
+    DocumentsComponent,
+    HeadlinesComponent
   ],
   imports: [
     BrowserModule,
