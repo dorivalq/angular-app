@@ -3,8 +3,7 @@ import { NewsService } from '../services/news.service';
 
 @Component({
   selector: 'app-documents',
-  templateUrl: './documents.component.html',
-  styleUrls: ['./documents.component.css']
+  templateUrl: './documents.component.html'
 })
 export class DocumentsComponent implements OnInit {
   news: any;
