@@ -25,17 +25,11 @@ export class HeadlinesComponent implements OnInit {
   }
 
   getCategoryData(category){
-    this.newsService.getData (`top-headlines?country=br&category=${category.toLowerCase()}`)//(`everthing?q=bitcoin`)
+    this.newsService.getData (`top-headlines?country=us&category=${category.toLowerCase()}`)
     .subscribe(data => {
       console.log(data);
       this.news = data;
     });
   }
 
-  // getData(){
-  //   this.newsService.getData('top-headlines?country=us')
-  //   .subscribe(data =>{
-  //     this.news = data;
-  //   })
-  // }
 }
