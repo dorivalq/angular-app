@@ -17,6 +17,7 @@ export class HeadlinesComponent implements OnInit {
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
+    this.getCategoryData(this.categories[0]);
   }
 
   onGetCategoryData(category){

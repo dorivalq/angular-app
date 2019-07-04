@@ -10,8 +10,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { DocumentsComponent } from './documents/documents.component';
+import { SourcesComponent } from './sources/sources.component';
 import { HeadlinesComponent } from './headlines/headlines.component';
-//import {  FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { HeadlinesComponent } from './headlines/headlines.component';
     HomeComponent,
     RegistrationComponent,
     DocumentsComponent,
+    SourcesComponent,
     HeadlinesComponent
   ],
   imports: [
